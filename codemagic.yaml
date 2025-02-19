@@ -1,0 +1,14 @@
+workflows:
+  ios-workflow:
+    name: iOS Build
+    instance_type: mac_mini_m1
+    environment:
+      vars:
+        XCODE_VERSION: 14.3
+    scripts:
+      - name: Install dependencies
+        script: flutter pub get
+      - name: Build iOS
+        script: flutter build ios --no-codesign
+    artifacts:
+      - build/ios/ipa/*.ipa
